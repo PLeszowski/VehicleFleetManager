@@ -51,6 +51,7 @@ public class Main {
         fleetManager.addInUseVehicleByLicencePlateNum("KR00004");
         fleetManager.addInUseVehicle(bus5);
         fleetManager.addInUseVehicle(bus5);
+        fleetManager.addInUseVehicleByLicencePlateNum("KR00005");
 
         System.out.println("----------list All InUse Vehicles-----------------");
         fleetManager.listAllInUseVehicles();

@@ -30,7 +30,7 @@ public class FleetManager {
 
 		//System.out.println("-----removeVehicleByLicencePlateNum:");
 
-		Vehicle vehicle = searchAllVehiclesByLicencePlateNum(licencePlateNum);
+		Vehicle vehicle = findAllVehiclesByLicencePlateNum(licencePlateNum);
 
 		if (vehicle == null) {
 			System.out.println("Vehicle with licence plate number " + licencePlateNum + " not found.");
@@ -38,7 +38,7 @@ public class FleetManager {
 			System.out.println("Removed vehicle with licence plate number: " + licencePlateNum + ".");
 			allVehicles.remove(vehicle);
 
-			vehicle = searchInUseVehiclesByLicencePlateNum(licencePlateNum);
+			vehicle = findInUseVehiclesByLicencePlateNum(licencePlateNum);
 
 			if(vehicle != null){
 				inUseVehicles.remove(vehicle);
@@ -65,9 +65,9 @@ public class FleetManager {
 
 		//System.out.println("-----addInUseVehicle:");
 
-		if (searchAllVehiclesByRef(vehicle)) {
+		if (findAllVehiclesByRef(vehicle)) {
 
-			if(searchInUseVehiclesByRef(vehicle)){
+			if(findInUseVehiclesByRef(vehicle)){
 				System.out.println("Vehicle with licence plate number " + vehicle.getVehicleLicencePlateNum() + " is already in use");
 			}
 			else {
@@ -84,14 +84,14 @@ public class FleetManager {
 
 		//System.out.println("-----addInUseVehicleByLicencePlateNum:");
 
-		Vehicle vehicle = searchAllVehiclesByLicencePlateNum(licencePlateNum);
+		Vehicle vehicle = findAllVehiclesByLicencePlateNum(licencePlateNum);
 
 		if (vehicle == null) {
 			System.out.println("Vehicle with licence plate number " + licencePlateNum + " not found.");
 		}
 		else {
 
-			if(searchInUseVehiclesByRef(vehicle)){
+			if(findInUseVehiclesByRef(vehicle)){
 				System.out.println("Vehicle with licence plate number " + licencePlateNum + " is already in use");
 			}
 			else{
@@ -105,12 +105,12 @@ public class FleetManager {
 
 		//System.out.println("-----removeInUseVehicle:");
 
-		if (searchInUseVehiclesByRef(vehicle)) {
+		if (findInUseVehiclesByRef(vehicle)) {
 			inUseVehicles.remove(vehicle);
 			System.out.println("Vehicle with licence plate number " + vehicle.getVehicleLicencePlateNum() + " is on base");
 		}
 		else {
-			if(searchAllVehiclesByRef(vehicle)){
+			if(findAllVehiclesByRef(vehicle)){
 				System.out.println("Vehicle with licence plate number " + vehicle.getVehicleLicencePlateNum() + " was already on base");
 			}
 			else{
@@ -123,10 +123,10 @@ public class FleetManager {
 
 		//System.out.println("-----removeInUseVehicleByLicencePlateNum:");
 
-		Vehicle vehicle = searchInUseVehiclesByLicencePlateNum(licencePlateNum);
+		Vehicle vehicle = findInUseVehiclesByLicencePlateNum(licencePlateNum);
 
 		if (vehicle == null) {
-			vehicle = searchAllVehiclesByLicencePlateNum(licencePlateNum);
+			vehicle = findAllVehiclesByLicencePlateNum(licencePlateNum);
 			if(vehicle == null) {
 				System.out.println("Vehicle with licence plate number " + licencePlateNum + " is not in fleet.");
 			}
@@ -157,7 +157,7 @@ public class FleetManager {
 
 		//System.out.println("-----displayVehicleDataByLicencePlateNum:");
 
-		Vehicle vehicle = searchAllVehiclesByLicencePlateNum(licencePlateNum);
+		Vehicle vehicle = findAllVehiclesByLicencePlateNum(licencePlateNum);
 
 		if (vehicle == null) {
 			System.out.println("Vehicle with licence plate number " + licencePlateNum + " not found.");
@@ -175,7 +175,7 @@ public class FleetManager {
 
 		//System.out.println("-----displayGPSPosition:");
 
-		if (searchAllVehiclesByRef(vehicle)) {
+		if (findAllVehiclesByRef(vehicle)) {
 			System.out.println("Vehicle with licence plate number " + vehicle.getVehicleLicencePlateNum() + " is at GPS position " + vehicle.getVehicleGPSPosLong() + " Longitude, " + vehicle.getVehicleGPSPosLat() + " Latitude.");
 		} else {
 			System.out.println("No GPS position, vehicle not in fleet.");
@@ -186,7 +186,7 @@ public class FleetManager {
 
 		//System.out.println("-----displayGPSPositionByDriver:");
 
-		Vehicle vehicle = searchAllVehiclesByDriversName(driversName);
+		Vehicle vehicle = findAllVehiclesByDriversName(driversName);
 
 		if (vehicle == null) {
 			System.out.println("Vehicle with driver " + driversName + " not found");
@@ -196,8 +196,7 @@ public class FleetManager {
 		}
 	}
 
-	private Vehicle searchAllVehiclesByLicencePlateNum(String licencePlateNum) {
-
+	private Vehicle findAllVehiclesByLicencePlateNum(String licencePlateNum) {
 
 		Vehicle vehicleID = null;
 
@@ -210,7 +209,7 @@ public class FleetManager {
 		return vehicleID;
 	}
 
-	private Vehicle searchAllVehiclesByDriversName(String driversName) {
+	private Vehicle findAllVehiclesByDriversName(String driversName) {
 
 		Vehicle vehicleID = null;
 
@@ -223,7 +222,7 @@ public class FleetManager {
 		return vehicleID;
 	}
 
-	private boolean searchAllVehiclesByRef(Vehicle searchedVehicle) {
+	private boolean findAllVehiclesByRef(Vehicle searchedVehicle) {
 
 		boolean vehicleFound = false;
 
@@ -236,7 +235,7 @@ public class FleetManager {
 		return vehicleFound;
 	}
 
-	private boolean searchInUseVehiclesByRef(Vehicle searchedVehicle) {
+	private boolean findInUseVehiclesByRef(Vehicle searchedVehicle) {
 
 		boolean vehicleFound = false;
 
@@ -249,7 +248,7 @@ public class FleetManager {
 		return vehicleFound;
 	}
 
-	private Vehicle searchInUseVehiclesByLicencePlateNum(String licencePlateNum) {
+	private Vehicle findInUseVehiclesByLicencePlateNum(String licencePlateNum) {
 
 		Vehicle vehicleID = null;
 
